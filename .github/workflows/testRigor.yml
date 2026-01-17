@@ -11,6 +11,7 @@ jobs:
 
     steps:
       - name: Start testRigor run
+        shell: bash
         run: |
           echo "Starting testRigor tests..."
           curl -X POST \
@@ -19,6 +20,7 @@ jobs:
             --data '{ "forceCancelPreviousTesting": true }' \
             https://api.testrigor.com/api/v1/apps/${{ secrets.APP }}/retest
       - name: Wait for testRigor results
+        shell: bash
         run: |
           echo "Waiting for testRigor to finish..."
           while true
